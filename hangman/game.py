@@ -12,7 +12,7 @@ class GuessAttempt(object):
             if miss:
                 raise InvalidGuessAttempt()
 
-# Adding @property to test. This was suggested online help.
+# Adding @property to test. This was suggested on online help.
 # TODO - read about @property on python docs.
 
     @property
@@ -31,8 +31,32 @@ class GuessAttempt(object):
 
 
 class GuessWord(object):
-    pass
+    def __init__(self):
+        pass
+
+    def perform_attempt(self):
+        pass
+
 
 
 class HangmanGame(object):
-    pass
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def select_random_word(cls):
+        pass
+
+    def guess(self):
+        pass
+
+    def is_won(self):
+        pass
+
+    def is_finished(self):
+        pass
+
+    def is_lost(self):
+        pass
+    
