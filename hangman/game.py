@@ -1,5 +1,5 @@
 from .exceptions import *
-import random
+from random import *
 
 
 class GuessAttempt(object):
@@ -15,48 +15,45 @@ class GuessAttempt(object):
 # Adding @property to test. This was suggested on online help.
 # TODO - read about @property on python docs.
 
-    @property
+
     def is_hit(self):
         if self.hit is None:
             self.hit = False
-
         return self.hit
 
-    @property
+
     def is_miss(self):
         if self.miss is None:
             self.miss = False
-
         return self.miss
 
 
 class GuessWord(object):
-    def __init__(self):
-        pass
+    def __init__(self, word):
 
-    def perform_attempt(self):
-        pass
+        if len(word) == 0:
+            raise InvalidWordException()
 
+        self.answer = word.lower()
+        self.masked = '*' * len(word)
 
+    def perform_attempt(self, letter):
+        if len(letter) > 1:
+            raise InvalidGuessedLetterException()
 
-class HangmanGame(object):
+        masked_work = ''
+        for i in range(0, len(self.answer)):
+            if letter.lower() == self.answer[i].lower():
+                masked_work += letter.lower()
+            else:
+                masked_work += self.masked[i]
+        self.masked = masked_work
 
-    def __init__(self):
-        pass
+        attempt = GuessAttempt(letter)
+        if letter.lower() in self.answer.lower():
+            attempt.hit = True
+        else:
+            attempt.miss = True
 
-    @classmethod
-    def select_random_word(cls):
-        pass
+        return attempt
 
-    def guess(self):
-        pass
-
-    def is_won(self):
-        pass
-
-    def is_finished(self):
-        pass
-
-    def is_lost(self):
-        pass
-    
